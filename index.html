@@ -8,7 +8,7 @@
   </head>
   <body>
     <div id="container">
-      <div class="screen active" id="start-screen">
+      <div class="screen" id="start-screen">
         <h1>Typing Speed Test</h1>
         <div class="select-container">
           <label for="select-time">Select Time:</label>
@@ -27,7 +27,22 @@
         </div>
         <button id="start-btn">Start Typing</button>
       </div>
-      <div class="screen" id="typing-screen"></div>
+      <div class="screen active" id="typing-screen">
+        <div id="time-wpm-container">
+          <p>Time Left: <span>25s</span></p>
+          <p>WPM: <span>60</span></p>
+        </div>
+        <div class="typing-main-con">
+          <h3>Type the following:</h3>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa
+            quaerat quam debitis rerum eveniet. Ea rem molestiae voluptates
+          </p>
+          <textarea name="textarea" id="typing-box"></textarea>
+          <p id="mistake-count">Mistakes: <span>2</span></p>
+          <p id="word-type">Words Typed: <span>15</span></p>
+        </div>
+      </div>
       <div class="screen" id="result-screen"></div>
     </div>
   </body>
