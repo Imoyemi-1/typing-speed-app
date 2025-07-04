@@ -8,7 +8,25 @@
   </head>
   <body>
     <div id="container">
-      <div class="screen active" id="start-screen"></div>
+      <div class="screen active" id="start-screen">
+        <h1>Typing Speed Test</h1>
+        <div id="select-time-cons">
+          <label>Select Time:</label>
+          <select name="time" id="select">
+            <option value="30s">30s</option>
+            <option value="60s">60s</option>
+          </select>
+        </div>
+        <div id="select-difficulty-cons">
+          <label>Difficulty:</label>
+          <select name="time" id="select">
+            <option value="easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+          </select>
+        </div>
+        <button id="start-btn">Start Typing</button>
+      </div>
       <div class="screen" id="typing-screen"></div>
       <div class="screen" id="result-screen"></div>
     </div>
