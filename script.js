@@ -32,9 +32,12 @@ const timeCountEle = document.getElementById('time-count');
 const resultScreenEle = document.getElementById('result-screen');
 const sentenceContainer = document.getElementById('main-sentence');
 const input = document.querySelector('input');
+const wordTypedEle = document.querySelector('#word-type span');
+const mistakesEle = document.querySelector('#mistake-count span');
 
 let currentWord = 0;
 let isTyping = false;
+let mistake = 0;
 // get Random word Paragraph
 
 function getRandomParagraph() {
@@ -67,14 +70,29 @@ function handleCurrentWordStates() {
   input.maxLength = word[currentWord].textContent.length;
 }
 
+// check work if its right or wrong
+
+function checkWord() {
+  const previousWord = document.querySelector('.current');
+  if (previousWord.textContent.toLowerCase() === input.value) {
+    previousWord.classList.add('correct');
+  } else {
+    previousWord.classList.add('wrong');
+    mistake++;
+  }
+}
+
 // move to next word
 
 function moveToNextWord() {
+  checkWord();
   input.value = '';
   currentWord++;
   handleCurrentWordStates();
-  input.placeholder = '';
+  wordTypedEle.textContent = currentWord;
+  mistakesEle.textContent = mistake;
 }
+
 // timer countdown
 function countDown(time, onComplete) {
   let count = time - 1;
@@ -112,6 +130,8 @@ startBtn.addEventListener('click', () => {
   input.focus();
   displayWord();
   handleCurrentWordStates();
+  wordTypedEle.textContent = currentWord;
+  mistakesEle.textContent = mistake;
 });
 
 input.addEventListener('keydown', (e) => {
@@ -120,13 +140,15 @@ input.addEventListener('keydown', (e) => {
     alphabet.push(String.fromCharCode(i));
   }
 
-  if (!input.value && !alphabet.includes(e.key)) e.preventDefault();
+  if (!input.value && !alphabet.includes(e.key.toLowerCase()))
+    e.preventDefault();
   else if (input.value && e.key === ' ') {
     e.preventDefault();
     moveToNextWord();
   } else if (!isTyping) {
     startTyping();
     isTyping = true;
+    input.placeholder = '';
   }
 });
 input.addEventListener('paste', (e) => {
