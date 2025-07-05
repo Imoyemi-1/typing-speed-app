@@ -29,6 +29,7 @@ const levelSelected = document.getElementById('select-difficulty');
 const startScreenEle = document.getElementById('start-screen');
 const typeScreenEle = document.getElementById('typing-screen');
 const timeCountEle = document.getElementById('time-count');
+const wpmCountEle = document.getElementById('wpm-count');
 const resultScreenEle = document.getElementById('result-screen');
 const sentenceContainer = document.getElementById('main-sentence');
 const input = document.querySelector('input');
@@ -93,6 +94,12 @@ function moveToNextWord() {
   mistakesEle.textContent = mistake;
 }
 
+// calculate word per mins
+
+function wordPerMins(time) {
+  return Math.round((currentWord * 60) / time);
+}
+
 // timer countdown
 function countDown(time, onComplete) {
   let count = time - 1;
@@ -102,6 +109,7 @@ function countDown(time, onComplete) {
       else timeCountEle.style.color = '#088b60';
 
       timeCountEle.textContent = `${count}s`;
+      wpmCountEle.textContent = wordPerMins(+timeSelected.value - count);
       count--;
       if (count < 0) {
         clearInterval(timeCount);
@@ -118,7 +126,7 @@ function startTyping() {
     resultScreenEle.classList.add('active');
   });
 
-  // timer();
+  timer();
 }
 
 // eventListeners
