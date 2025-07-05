@@ -35,6 +35,13 @@ const sentenceContainer = document.getElementById('main-sentence');
 const input = document.querySelector('input');
 const wordTypedEle = document.querySelector('#word-type span');
 const mistakesEle = document.querySelector('#mistake-count span');
+const timeSpentEle = document.querySelector('#time-spent span');
+const wpmResultEle = document.querySelector('.wpm-result');
+const correctWordEle = document.querySelector('#correct-word span');
+const mistakeResultEle = document.querySelector('#mistake-result span');
+const totalWordEle = document.querySelector('#total-word span');
+const totalWordTypeEle = document.querySelector('#total-word-typed span');
+const accuracyEle = document.querySelector('#accuracy span');
 
 let currentWord = 0;
 let isTyping = false;
@@ -84,17 +91,32 @@ function checkWord() {
   }
 }
 
+// display result
+function displayResult() {
+  const timeRemain = timeCountEle.textContent.replace('s', '');
+  const accuracy = ((currentWord - mistake) / currentWord) * 100;
+
+  timeSpentEle.textContent = `${+timeSelected.value - +timeRemain} seconds`;
+  wpmResultEle.textContent = wpmCountEle.textContent;
+  correctWordEle.textContent = currentWord - mistake;
+  mistakeResultEle.textContent = mistake;
+  totalWordTypeEle.textContent = currentWord;
+  totalWordEle.textContent = sentenceContainer.children.length;
+  accuracyEle.textContent = `${accuracy.toFixed(1)}%`;
+}
+
 // move to next word
 
 function moveToNextWord() {
-  if (currentWord + 1 >= sentenceContainer.children.length) {
+  currentWord++;
+  checkWord();
+  if (currentWord >= sentenceContainer.children.length) {
+    displayResult();
+    doneTyping = true;
     typeScreenEle.classList.remove('active');
     resultScreenEle.classList.add('active');
-    doneTyping = true;
   } else {
-    checkWord();
     input.value = '';
-    currentWord++;
     handleCurrentWordStates();
     wordTypedEle.textContent = currentWord;
     mistakesEle.textContent = mistake;
@@ -112,16 +134,16 @@ function countDown(time, onComplete) {
   let count = time - 1;
   return () => {
     const timeCount = setInterval(() => {
+      if (count < 0 || doneTyping) {
+        clearInterval(timeCount);
+        if (onComplete) onComplete();
+      }
       if (count < 15) timeCountEle.style.color = 'red';
       else timeCountEle.style.color = '#088b60';
 
       timeCountEle.textContent = `${count}s`;
       wpmCountEle.textContent = wordPerMins(+timeSelected.value - count);
       count--;
-      if (count < 0 || doneTyping) {
-        clearInterval(timeCount);
-        if (onComplete) onComplete();
-      }
     }, 1000);
   };
 }
@@ -131,6 +153,7 @@ function startTyping() {
   const timer = countDown(+timeSelected.value, () => {
     typeScreenEle.classList.remove('active');
     resultScreenEle.classList.add('active');
+    displayResult();
   });
 
   timer();
