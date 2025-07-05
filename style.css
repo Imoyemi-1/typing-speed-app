@@ -132,7 +132,7 @@ body {
 #main-sentence .word.correct {
   color: green;
 }
-#main-sentence .word.correct {
+#main-sentence .word.wrong {
   color: red;
 }
 
