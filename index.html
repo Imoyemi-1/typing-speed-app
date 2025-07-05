@@ -27,7 +27,7 @@
         </div>
         <button id="start-btn">Start Typing</button>
       </div>
-      <div class="screen active" id="typing-screen">
+      <div class="screen" id="typing-screen">
         <div id="time-wpm-container">
           <div>
             <p>Time Left:</p>
@@ -56,7 +56,20 @@
           <p id="word-type">Words Typed: <span>15</span></p>
         </div>
       </div>
-      <div class="screen" id="result-screen"></div>
+      <div class="screen active" id="result-screen">
+        <h1>Typing Speed Results</h1>
+        <div id="details">
+          <p class="result-txt">Time: <span>60 seconds</span></p>
+          <p class="result-txt">WPM: <span>78</span></p>
+          <p class="result-txt">Accuracy: <span>90%</span></p>
+          <p class="result-txt">Correct Words: <span>15</span></p>
+          <p class="result-txt">Mistakes: <span>3</span></p>
+        </div>
+        <div id="result-btn-cons">
+          <button id="restart-btn">Restart</button>
+          <button id="setup-btn">Go to Setup</button>
+        </div>
+      </div>
     </div>
   </body>
 </html>
