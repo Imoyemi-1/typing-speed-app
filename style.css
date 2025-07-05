@@ -125,6 +125,16 @@ body {
   margin-bottom: 2.5rem;
 }
 
+#main-sentence .word.current {
+  color: #838586;
+}
+#main-sentence .word.correct {
+  color: green;
+}
+#main-sentence .word.correct {
+  color: red;
+}
+
 #typing-box {
   width: 100%;
   margin-bottom: 2rem;
