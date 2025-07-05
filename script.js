@@ -31,8 +31,10 @@ const typeScreenEle = document.getElementById('typing-screen');
 const timeCountEle = document.getElementById('time-count');
 const resultScreenEle = document.getElementById('result-screen');
 const sentenceContainer = document.getElementById('main-sentence');
+const input = document.querySelector('input');
 
-let currentWord;
+const currentWord = 0;
+let isTyping = false;
 // get Random word Paragraph
 
 function getRandomParagraph() {
@@ -57,9 +59,10 @@ function displayWord() {
 
   sentenceContainer.innerHTML = word;
 }
+
 // timer countdown
 function countDown(time, onComplete) {
-  let count = time;
+  let count = time - 1;
   return () => {
     const timeCount = setInterval(() => {
       if (count < 15) timeCountEle.style.color = 'red';
@@ -75,10 +78,15 @@ function countDown(time, onComplete) {
   };
 }
 
-const timer = countDown(+timeSelected.value, () => {
-  typeScreenEle.classList.remove('active');
-  resultScreenEle.classList.add('active');
-});
+// start typing timer start countdown
+function startTyping() {
+  const timer = countDown(+timeSelected.value, () => {
+    typeScreenEle.classList.remove('active');
+    resultScreenEle.classList.add('active');
+  });
+
+  timer();
+}
 
 // eventListeners
 
@@ -86,5 +94,22 @@ startBtn.addEventListener('click', () => {
   startScreenEle.classList.remove('active');
   typeScreenEle.classList.add('active');
   timeCountEle.textContent = `${timeSelected.value}s`;
+  input.focus();
   displayWord();
+});
+
+input.addEventListener('keydown', (e) => {
+  const alphabet = [];
+  for (let i = 97; i <= 122; i++) {
+    alphabet.push(String.fromCharCode(i));
+  }
+
+  if (!input.value && !alphabet.includes(e.key)) e.preventDefault();
+  else if (!isTyping) {
+    startTyping();
+    isTyping = true;
+  }
+});
+input.addEventListener('paste', (e) => {
+  e.preventDefault();
 });
