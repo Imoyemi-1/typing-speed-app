@@ -33,7 +33,7 @@ const resultScreenEle = document.getElementById('result-screen');
 const sentenceContainer = document.getElementById('main-sentence');
 const input = document.querySelector('input');
 
-const currentWord = 0;
+let currentWord = 0;
 let isTyping = false;
 // get Random word Paragraph
 
@@ -64,8 +64,17 @@ function handleCurrentWordStates() {
   const word = document.querySelectorAll('.word');
   word.forEach((item) => item.classList.remove('current'));
   word[currentWord].classList.add('current');
+  input.maxLength = word[currentWord].textContent.length;
 }
 
+// move to next word
+
+function moveToNextWord() {
+  input.value = '';
+  currentWord++;
+  handleCurrentWordStates();
+  input.placeholder = '';
+}
 // timer countdown
 function countDown(time, onComplete) {
   let count = time - 1;
@@ -91,7 +100,7 @@ function startTyping() {
     resultScreenEle.classList.add('active');
   });
 
-  timer();
+  // timer();
 }
 
 // eventListeners
@@ -112,7 +121,10 @@ input.addEventListener('keydown', (e) => {
   }
 
   if (!input.value && !alphabet.includes(e.key)) e.preventDefault();
-  else if (!isTyping) {
+  else if (input.value && e.key === ' ') {
+    e.preventDefault();
+    moveToNextWord();
+  } else if (!isTyping) {
     startTyping();
     isTyping = true;
   }
