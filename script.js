@@ -29,6 +29,29 @@ const levelSelected = document.getElementById('select-difficulty');
 const startScreenEle = document.getElementById('start-screen');
 const typeScreenEle = document.getElementById('typing-screen');
 
+// timer countdown
+function countDown(time, onComplete) {
+  let count = time;
+  return () => {
+    const timeCount = setInterval(() => {
+      if (count < 15) timeCountEle.style.color = 'red';
+      else timeCountEle.style.color = '#088b60';
+
+      timeCountEle.textContent = `${count}s`;
+      count--;
+      if (count < 0) {
+        clearInterval(timeCount);
+        if (onComplete) onComplete();
+      }
+    }, 1000);
+  };
+}
+
+const timer = countDown(+timeSelected.value, () => {
+  typeScreenEle.classList.remove('active');
+  resultScreenEle.classList.add('active');
+});
+
 // eventListeners
 
 startBtn.addEventListener('click', () => {
