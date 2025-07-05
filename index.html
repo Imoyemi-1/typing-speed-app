@@ -56,11 +56,22 @@
       <div class="screen" id="result-screen">
         <h1>Typing Speed Results</h1>
         <div id="details">
-          <p class="result-txt">Time: <span>60 seconds</span></p>
-          <p class="result-txt">WPM: <span>78</span></p>
-          <p class="result-txt">Accuracy: <span>90%</span></p>
-          <p class="result-txt">Correct Words: <span>15</span></p>
-          <p class="result-txt">Mistakes: <span>3</span></p>
+          <p class="result-txt" id="total-word">
+            Total Words Display: <span></span>
+          </p>
+          <p class="result-txt" id="total-word-typed">
+            Total Words Typed: <span></span>
+          </p>
+          <p class="result-txt" id="time-spent">Time Spent: <span></span></p>
+          <p class="result-txt" id="word-per-mins-result">
+            Word Per Min <span id="small">(WPM):</span>
+            <span class="wpm-result"></span>
+          </p>
+          <p class="result-txt" id="accuracy">Accuracy: <span></span></p>
+          <p class="result-txt" id="correct-word">
+            Correct Words: <span></span>
+          </p>
+          <p class="result-txt" id="mistake-result">Mistakes: <span></span></p>
         </div>
         <div id="result-btn-cons">
           <button id="restart-btn">Restart</button>
