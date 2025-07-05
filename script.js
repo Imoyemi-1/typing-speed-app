@@ -60,6 +60,12 @@ function displayWord() {
   sentenceContainer.innerHTML = word;
 }
 
+function handleCurrentWordStates() {
+  const word = document.querySelectorAll('.word');
+  word.forEach((item) => item.classList.remove('current'));
+  word[currentWord].classList.add('current');
+}
+
 // timer countdown
 function countDown(time, onComplete) {
   let count = time - 1;
@@ -96,6 +102,7 @@ startBtn.addEventListener('click', () => {
   timeCountEle.textContent = `${timeSelected.value}s`;
   input.focus();
   displayWord();
+  handleCurrentWordStates();
 });
 
 input.addEventListener('keydown', (e) => {
@@ -113,3 +120,5 @@ input.addEventListener('keydown', (e) => {
 input.addEventListener('paste', (e) => {
   e.preventDefault();
 });
+
+input.addEventListener('input', () => {});
