@@ -30,10 +30,10 @@ body {
   background-color: white;
   border: 1px solid #ced4da;
   border-radius: 8px;
-  padding: 1.5rem 3rem;
+  padding: 3rem 3rem 1.5rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   width: 100%;
-  max-width: 500px;
+  max-width: 60rem;
 }
 
 .screen {
@@ -88,6 +88,65 @@ body {
 #start-btn:active {
   transform: scale(0.95);
 }
-#start-btn:active {
+#start-btn:focus {
   transform: scale(1);
+}
+
+#time-wpm-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem 0;
+  border: 2px solid #ced4da;
+  margin-bottom: 2.5rem;
+  border-radius: 6px;
+}
+
+#time-wpm-container p {
+  font-size: 1.2rem;
+}
+
+#time-wpm-container span {
+  font-weight: 600;
+  font-size: 5rem;
+}
+
+#time-wpm-container #time-count {
+  color: #088b60;
+}
+#time-wpm-container #wpm-count {
+  color: #45494c;
+}
+
+#main-sentence {
+  font-size: 2rem;
+  font-weight: 600;
+  font-style: italic;
+  margin-bottom: 2.5rem;
+}
+
+#typing-box {
+  width: 100%;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  font-size: 1.6rem;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  color: #212529;
+  outline: none;
+}
+
+#typing-box:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.25);
+}
+
+#mistake-count,
+#word-type {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+#mistake-count span,
+#word-type span {
+  font-weight: 500;
 }
