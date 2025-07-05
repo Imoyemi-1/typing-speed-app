@@ -126,7 +126,8 @@ body {
 }
 
 #main-sentence .word.current {
-  color: #838586;
+  text-decoration: underline;
+  color: #4f46e5;
 }
 #main-sentence .word.correct {
   color: green;
