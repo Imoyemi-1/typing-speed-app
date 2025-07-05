@@ -30,7 +30,7 @@ body {
   background-color: white;
   border: 1px solid #ced4da;
   border-radius: 8px;
-  padding: 3rem 3rem 1.5rem;
+  padding: 1.5rem 3rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   width: 100%;
   max-width: 60rem;
@@ -48,7 +48,7 @@ body {
 #start-screen h1 {
   font-size: 3rem;
   color: #343a40;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   display: flex;
   justify-content: center;
 }
@@ -65,8 +65,8 @@ body {
 }
 
 .select-container select {
-  width: 8rem;
-  height: 2.5rem;
+  width: 10rem;
+  height: 3rem;
   font-size: 1.4rem;
   outline: none;
 }
@@ -75,7 +75,7 @@ body {
   background-color: #4f46e5;
   color: white;
   border: none;
-  padding: 0.85rem 1.5rem;
+  padding: 1rem 1.5rem;
   border-radius: 6px;
   font-weight: 700;
   float: right;
@@ -98,7 +98,7 @@ body {
   align-items: center;
   padding: 1rem 2rem 0;
   border: 2px solid #ced4da;
-  margin-bottom: 2.5rem;
+  margin: 2.5rem 0;
   border-radius: 6px;
 }
 
@@ -149,4 +149,61 @@ body {
 #mistake-count span,
 #word-type span {
   font-weight: 500;
+  margin-left: 0.3rem;
+}
+
+#result-screen h1 {
+  font-size: 3rem;
+  color: #343a40;
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.result-txt {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.result-txt span {
+  font-size: 1.6rem;
+  font-weight: 300;
+  margin-left: 0.3rem;
+}
+
+#result-btn-cons {
+  display: flex;
+  justify-content: space-between;
+}
+
+#result-btn-cons button {
+  width: 12rem;
+  padding: 1rem;
+  border-radius: 6px;
+  font-weight: 700;
+  margin-top: 2rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+#result-btn-cons button:hover,
+#result-btn-cons button:active {
+  transform: scale(0.95);
+}
+#result-btn-cons button:focus {
+  transform: scale(1);
+}
+#restart-btn {
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  box-shadow: 0 4px 10px rgba(43, 41, 56, 0.05);
+}
+
+#setup-btn {
+  background-color: white;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  color: #1e2225;
 }
