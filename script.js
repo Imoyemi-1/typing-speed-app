@@ -38,6 +38,7 @@ const mistakesEle = document.querySelector('#mistake-count span');
 
 let currentWord = 0;
 let isTyping = false;
+let doneTyping = false;
 let mistake = 0;
 // get Random word Paragraph
 
@@ -86,12 +87,18 @@ function checkWord() {
 // move to next word
 
 function moveToNextWord() {
-  checkWord();
-  input.value = '';
-  currentWord++;
-  handleCurrentWordStates();
-  wordTypedEle.textContent = currentWord;
-  mistakesEle.textContent = mistake;
+  if (currentWord + 1 >= sentenceContainer.children.length) {
+    typeScreenEle.classList.remove('active');
+    resultScreenEle.classList.add('active');
+    doneTyping = true;
+  } else {
+    checkWord();
+    input.value = '';
+    currentWord++;
+    handleCurrentWordStates();
+    wordTypedEle.textContent = currentWord;
+    mistakesEle.textContent = mistake;
+  }
 }
 
 // calculate word per mins
@@ -111,7 +118,7 @@ function countDown(time, onComplete) {
       timeCountEle.textContent = `${count}s`;
       wpmCountEle.textContent = wordPerMins(+timeSelected.value - count);
       count--;
-      if (count < 0) {
+      if (count < 0 || doneTyping) {
         clearInterval(timeCount);
         if (onComplete) onComplete();
       }
