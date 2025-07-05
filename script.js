@@ -28,7 +28,35 @@ const timeSelected = document.getElementById('select-time');
 const levelSelected = document.getElementById('select-difficulty');
 const startScreenEle = document.getElementById('start-screen');
 const typeScreenEle = document.getElementById('typing-screen');
+const timeCountEle = document.getElementById('time-count');
+const resultScreenEle = document.getElementById('result-screen');
+const sentenceContainer = document.getElementById('main-sentence');
 
+let currentWord;
+// get Random word Paragraph
+
+function getRandomParagraph() {
+  const random = Math.floor(Math.random() * 5);
+  switch (levelSelected.value) {
+    case 'easy':
+      return easyTexts[random];
+    case 'Medium':
+      return mediumTexts[random];
+    default:
+      return hardTexts[random];
+  }
+}
+
+function displayWord() {
+  const sentence = getRandomParagraph();
+
+  const word = sentence
+    .split(' ')
+    .map((item) => `<span class = 'word'>${item}</span>`)
+    .join(' ');
+
+  sentenceContainer.innerHTML = word;
+}
 // timer countdown
 function countDown(time, onComplete) {
   let count = time;
