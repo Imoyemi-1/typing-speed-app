@@ -54,5 +54,5 @@ A multi-step single-page typing speed test built with **HTML, CSS, and JavaScrip
 
 ## Author
 
-- Twitter [@Imoyemi](https://{www.x.com/thatguyimo})
+- Twitter [@Imoyemi](https://www.x.com/thatguyimo)
 - GitHub [Imoyemi](https://{github.com/Imoyemi-1})
