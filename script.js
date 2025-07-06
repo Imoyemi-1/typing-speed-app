@@ -105,16 +105,38 @@ function displayResult() {
   accuracyEle.textContent = `${accuracy.toFixed(1)}%`;
 }
 
+// change screens
+
+function changeToHome() {
+  resultScreenEle.classList.remove('active');
+  typeScreenEle.classList.remove('active');
+  startScreenEle.classList.add('active');
+}
+function changeToTyping() {
+  startScreenEle.classList.remove('active');
+  resultScreenEle.classList.remove('active');
+  typeScreenEle.classList.add('active');
+  timeCountEle.textContent = `${timeSelected.value}s`;
+  input.focus();
+  currentWord = 0;
+  isTyping = false;
+  doneTyping = false;
+  mistake = 0;
+}
+function changeToResult() {
+  typeScreenEle.classList.remove('active');
+  startScreenEle.classList.remove('active');
+  resultScreenEle.classList.add('active');
+  displayResult();
+}
 // move to next word
 
 function moveToNextWord() {
   currentWord++;
   checkWord();
   if (currentWord >= sentenceContainer.children.length) {
-    displayResult();
     doneTyping = true;
-    typeScreenEle.classList.remove('active');
-    resultScreenEle.classList.add('active');
+    changeToResult();
   } else {
     input.value = '';
     handleCurrentWordStates();
@@ -151,9 +173,7 @@ function countDown(time, onComplete) {
 // start typing timer start countdown
 function startTyping() {
   const timer = countDown(+timeSelected.value, () => {
-    typeScreenEle.classList.remove('active');
-    resultScreenEle.classList.add('active');
-    displayResult();
+    changeToResult();
   });
 
   timer();
@@ -162,10 +182,7 @@ function startTyping() {
 // eventListeners
 
 startBtn.addEventListener('click', () => {
-  startScreenEle.classList.remove('active');
-  typeScreenEle.classList.add('active');
-  timeCountEle.textContent = `${timeSelected.value}s`;
-  input.focus();
+  changeToTyping();
   displayWord();
   handleCurrentWordStates();
   wordTypedEle.textContent = currentWord;
