@@ -42,6 +42,7 @@ const mistakeResultEle = document.querySelector('#mistake-result span');
 const totalWordEle = document.querySelector('#total-word span');
 const totalWordTypeEle = document.querySelector('#total-word-typed span');
 const accuracyEle = document.querySelector('#accuracy span');
+const retryBtn = document.querySelector('#retry-btn');
 
 let currentWord = 0;
 let isTyping = false;
@@ -122,6 +123,18 @@ function changeToTyping() {
   isTyping = false;
   doneTyping = false;
   mistake = 0;
+  wordTypedEle.textContent = currentWord;
+  mistakesEle.textContent = mistake;
+  document.querySelectorAll('.wrong').forEach((item) => {
+    if (item) item.classList.remove('wrong');
+  });
+  document.querySelectorAll('.correct').forEach((item) => {
+    if (item) item.classList.remove('correct');
+  });
+  input.value = '';
+  input.placeholder = 'Start typing...';
+  timeCountEle.style.color = '#088b60';
+  wpmCountEle.textContent = '0';
 }
 function changeToResult() {
   typeScreenEle.classList.remove('active');
@@ -185,8 +198,6 @@ startBtn.addEventListener('click', () => {
   changeToTyping();
   displayWord();
   handleCurrentWordStates();
-  wordTypedEle.textContent = currentWord;
-  mistakesEle.textContent = mistake;
 });
 
 input.addEventListener('keydown', (e) => {
@@ -211,3 +222,8 @@ input.addEventListener('paste', (e) => {
 });
 
 input.addEventListener('input', () => {});
+
+retryBtn.addEventListener('click', () => {
+  changeToTyping();
+  handleCurrentWordStates();
+});
