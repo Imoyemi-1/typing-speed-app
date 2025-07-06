@@ -1,8 +1,12 @@
-# ⌨️ Typing Speed Test Game
+<h1 align="center">⌨️ Typing Speed Test Game</h1>
 
-A multi-step single-page typing speed test built with **HTML, CSS, and JavaScript**. Users can select their desired **time** and **difficulty level**, and the app tracks their typing speed (WPM), accuracy, and mistakes in real-time.
-
-[Live demo](https://typing-speed-test12.netlify.app/)
+<div align="center">
+  <h3>
+    <a href="https://typing-speed-test12.netlify.app/">
+      Live Demo
+    </a>
+  </h3>
+</div>
 
 ## Table of Contents
 
@@ -14,7 +18,9 @@ A multi-step single-page typing speed test built with **HTML, CSS, and JavaScrip
 
 ## 🖼 Preview
 
-[screenshot](/Typing-screenshot.png)
+[screenshot](Typing-screenshot.png)
+
+A multi-step single-page typing speed test built with **HTML, CSS, and JavaScript**. Users can select their desired **time** and **difficulty level**, and the app tracks their typing speed (WPM), accuracy, and mistakes in real-time.
 
 ## 🚀 Features
 
