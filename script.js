@@ -43,6 +43,7 @@ const totalWordEle = document.querySelector('#total-word span');
 const totalWordTypeEle = document.querySelector('#total-word-typed span');
 const accuracyEle = document.querySelector('#accuracy span');
 const retryBtn = document.querySelector('#retry-btn');
+const setUpBtn = document.querySelector('#setup-btn');
 
 let currentWord = 0;
 let isTyping = false;
@@ -95,7 +96,7 @@ function checkWord() {
 // display result
 function displayResult() {
   const timeRemain = timeCountEle.textContent.replace('s', '');
-  const accuracy = ((currentWord - mistake) / currentWord) * 100;
+  const accuracy = ((currentWord - mistake) / currentWord) * 100 || 0;
 
   timeSpentEle.textContent = `${+timeSelected.value - +timeRemain} seconds`;
   wpmResultEle.textContent = wpmCountEle.textContent;
@@ -227,3 +228,5 @@ retryBtn.addEventListener('click', () => {
   changeToTyping();
   handleCurrentWordStates();
 });
+
+setUpBtn.addEventListener('click', changeToHome);
