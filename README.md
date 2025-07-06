@@ -18,7 +18,7 @@
 
 ## 🖼 Preview
 
-[screenshot](Typing-screenshot.png)
+![screenshot](Typing-screenshot.png)
 
 A multi-step single-page typing speed test built with **HTML, CSS, and JavaScript**. Users can select their desired **time** and **difficulty level**, and the app tracks their typing speed (WPM), accuracy, and mistakes in real-time.
 
