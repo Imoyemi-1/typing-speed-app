@@ -222,8 +222,6 @@ input.addEventListener('paste', (e) => {
   e.preventDefault();
 });
 
-input.addEventListener('input', () => {});
-
 retryBtn.addEventListener('click', () => {
   changeToTyping();
   handleCurrentWordStates();
