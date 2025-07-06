@@ -136,6 +136,8 @@ function changeToTyping() {
   input.placeholder = 'Start typing...';
   timeCountEle.style.color = '#088b60';
   wpmCountEle.textContent = '0';
+  input.style.borderColor = '#4f46e5';
+  input.style.boxShadow = '0 0 0 2px rgba(79, 70, 229, 0.25)';
 }
 function changeToResult() {
   typeScreenEle.classList.remove('active');
@@ -228,3 +230,14 @@ retryBtn.addEventListener('click', () => {
 });
 
 setUpBtn.addEventListener('click', changeToHome);
+
+input.addEventListener('input', () => {
+  const current = document.querySelector('.current').textContent;
+  if (!current.toLowerCase().includes(input.value.toLowerCase())) {
+    input.style.borderColor = '#e54646';
+    input.style.boxShadow = ' 0 0 0 2px rgba(229, 70, 70, 0.25)';
+  } else {
+    input.style.borderColor = '#4f46e5';
+    input.style.boxShadow = '0 0 0 2px rgba(79, 70, 229, 0.25)';
+  }
+});
