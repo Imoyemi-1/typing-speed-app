@@ -194,14 +194,20 @@ body {
 }
 
 #result-btn-cons button {
-  width: 12rem;
-  padding: 1rem;
+  width: 14rem;
+  padding: 1.2rem;
   border-radius: 6px;
   font-weight: 700;
   margin-top: 2rem;
   cursor: pointer;
   transition: transform 0.3s ease;
+  text-align: center;
 }
+
+#result-btn-cons button i {
+  margin-right: 5px;
+}
+
 #result-btn-cons button:hover,
 #result-btn-cons button:active {
   transform: scale(0.95);
@@ -209,7 +215,7 @@ body {
 #result-btn-cons button:focus {
   transform: scale(1);
 }
-#restart-btn {
+#retry-btn {
   background-color: #4f46e5;
   color: white;
   border: none;
